@@ -58,7 +58,8 @@ fun PalindromeInput(
             Text(
                 text = label,
                 color = Color.Black.copy(alpha = 0.25f),
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold
             )
         },
         colors = TextFieldDefaults.colors(
