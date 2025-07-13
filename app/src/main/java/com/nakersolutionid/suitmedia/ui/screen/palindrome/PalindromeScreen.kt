@@ -38,7 +38,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nakersolutionid.suitmedia.R
 import com.nakersolutionid.suitmedia.extensions.meshGradient
-import com.nakersolutionid.suitmedia.ui.component.palindrome.PalindromeButton
+import com.nakersolutionid.suitmedia.ui.component.common.MyButton
 import com.nakersolutionid.suitmedia.ui.component.palindrome.PalindromeInput
 import com.nakersolutionid.suitmedia.ui.component.palindrome.ProfilePicture
 import com.nakersolutionid.suitmedia.ui.theme.SuitmediaTheme
@@ -172,14 +172,14 @@ fun PalindromeScreen(
 
             Spacer(Modifier.height(42.dp))
 
-            PalindromeButton(
+            MyButton(
                 label = "CHECK",
                 onClick = { viewModel.isPalindrome() }
             )
 
             Spacer(Modifier.height(8.dp))
 
-            PalindromeButton(
+            MyButton(
                 label = "NEXT",
                 onClick = { onNextScreen(uiState.name) }
             )

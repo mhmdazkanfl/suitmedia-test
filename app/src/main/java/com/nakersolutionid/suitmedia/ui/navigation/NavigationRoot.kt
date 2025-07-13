@@ -3,6 +3,7 @@ package com.nakersolutionid.suitmedia.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -10,6 +11,7 @@ import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.nakersolutionid.suitmedia.ui.screen.palindrome.PalindromeScreen
+import com.nakersolutionid.suitmedia.ui.screen.welcome.WelcomeScreen
 
 @Composable
 fun NavigationRoot(modifier: Modifier = Modifier) {
@@ -26,7 +28,7 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
         ),
         entryProvider = entryProvider {
             entry<Palindrome> { PalindromeScreen(onNextScreen = { backStack.add(Welcome(it)) }) }
-            entry<Welcome> { }
+            entry<Welcome> { key -> WelcomeScreen(username = key.name, onNavigationBack = { backStack.removeLastOrNull() }) }
             entry<UserSelect> { }
         }
     )
