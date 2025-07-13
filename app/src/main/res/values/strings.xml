@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Suitmedia</string>
+    <string name="tf_name">Name</string>
+    <string name="tf_palindrome">Palindrome</string>
+    <string name="btn_check_is_palindrome">Check</string>
+    <string name="btn_palindrome_next_screen">Next</string>
 </resources>
