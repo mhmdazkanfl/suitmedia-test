@@ -25,6 +25,7 @@ import com.nakersolutionid.suitmedia.ui.theme.SuitmediaTheme
 @Composable
 fun MyTopAppBar(
     modifier: Modifier = Modifier,
+    title: String,
     onNavigationBack: () -> Unit
 ) {
     CenterAlignedTopAppBar(
@@ -32,7 +33,7 @@ fun MyTopAppBar(
         title = {
             Text(
                 modifier = Modifier,
-                text = "Second Screen",
+                text = title,
                 fontWeight = FontWeight.Bold
             )
         },
@@ -56,6 +57,6 @@ fun MyTopAppBar(
 @Composable
 private fun MyTopAppBarPreview() {
     SuitmediaTheme {
-        MyTopAppBar(onNavigationBack = {})
+        MyTopAppBar(title = "Second Screen", onNavigationBack = {})
     }
 }

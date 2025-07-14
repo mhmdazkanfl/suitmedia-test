@@ -35,18 +35,24 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nakersolutionid.suitmedia.R
+import com.nakersolutionid.suitmedia.di.networkModule
+import com.nakersolutionid.suitmedia.di.previewModule
+import com.nakersolutionid.suitmedia.di.repositoryModule
+import com.nakersolutionid.suitmedia.di.viewModelModule
 import com.nakersolutionid.suitmedia.extensions.meshGradient
 import com.nakersolutionid.suitmedia.ui.component.common.MyButton
 import com.nakersolutionid.suitmedia.ui.component.palindrome.PalindromeInput
 import com.nakersolutionid.suitmedia.ui.component.palindrome.ProfilePicture
+import com.nakersolutionid.suitmedia.ui.screen.userselect.UserSelectScreen
 import com.nakersolutionid.suitmedia.ui.theme.SuitmediaTheme
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.KoinApplicationPreview
 
 @Composable
 fun PalindromeScreen(
-    viewModel: PalindromeViewModel = viewModel(),
+    viewModel: PalindromeViewModel = koinViewModel(),
     onNextScreen: (String) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -190,7 +196,9 @@ fun PalindromeScreen(
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 private fun PalindromeScreenPreview() {
-    SuitmediaTheme {
-        PalindromeScreen(onNextScreen = {})
+    KoinApplicationPreview(application = { modules(previewModule) }) {
+        SuitmediaTheme {
+            PalindromeScreen(onNextScreen = {})
+        }
     }
 }
