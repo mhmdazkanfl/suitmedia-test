@@ -24,13 +24,15 @@ import com.nakersolutionid.suitmedia.ui.theme.SuitmediaTheme
 fun WelcomeScreen(
     modifier: Modifier = Modifier,
     username: String,
-    onNavigationBack: () -> Unit
+    selectedUser: String? = null,
+    onNavigationBack: () -> Unit,
+    onUserSelect: () -> Unit
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             Column {
-                MyTopAppBar(onNavigationBack = onNavigationBack)
+                MyTopAppBar(title = "Second Screen", onNavigationBack = onNavigationBack)
                 HorizontalDivider(color = Color.LightGray.copy(alpha = 0.5f))
             }
         }
@@ -63,7 +65,7 @@ fun WelcomeScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Selected User Name",
+                    text = selectedUser ?: "Selected User Name",
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.headlineMedium
                 )
@@ -71,7 +73,7 @@ fun WelcomeScreen(
 
             MyButton(
                 label = "Choose a User",
-                onClick = {  }
+                onClick = onUserSelect
             )
         }
     }
@@ -81,6 +83,6 @@ fun WelcomeScreen(
 @Composable
 private fun WelcomeScreenPreview() {
     SuitmediaTheme {
-        WelcomeScreen(username = "John Doe", onNavigationBack = {})
+        WelcomeScreen(username = "John Doe", onNavigationBack = {}, onUserSelect = {})
     }
 }
